@@ -42,7 +42,7 @@ jobs:
             cp -r .circleci gh-pages/
             cp -r new_chart/* gh-pages/
             cd gh-pages || exit 1
-            helm repo index repo
+            helm repo index .
             git add -A
             git config user.email "cicd@modusbox.com"
             git config user.name "CICD at ModusBox"
