@@ -55,19 +55,14 @@ workflows:
     jobs:
       - lint:
           filters:
-            tags:
-              only: /.*/
             branches:
-              ignore:
-                - gh-pages
+              only:
+                - master
       - build_and_publish_chart:
           # context: org-global
           requires:
             - lint
           filters:
-            tags:
-              only: /^v.*/
             branches:
               ignore:
-                - /.*/
                 - gh-pages
