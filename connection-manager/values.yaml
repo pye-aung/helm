@@ -1,0 +1,54 @@
+api:
+  image:
+    name: modusbox/connection-manager-api
+    version: 1.5.3
+  ports:
+    containerPort: 3001
+    nodePort: 31057
+  oauth:
+    enabled: "FALSE"
+    issuer: https://localhost/oauth2/token
+    key: mysecretkey
+    secret: changeme
+    resetPassword:
+      issuer: https://localhost/scim2/Users
+      user: myuser
+      pass: changeme
+  url: https://localhost
+  auth2fa:
+    enabled: "FALSE"
+  totp:
+    admin:
+      issuer: https://localhost/totp
+      user: myuser
+      password: changeme
+    label: MCM
+    issuer: MCM
+  wso2:
+    manager:
+      service:
+        url: https://localhost:9443/services/RemoteUserStoreManagerService.RemoteUserStoreManagerServiceHttpsSoap12Endpoint
+        user: myuser
+        pass: changeme
+
+ui:
+  image:
+    name: modusbox/connection-manager-ui
+    version: 1.6.9
+  ports:
+    containerPort: 8080
+    nodePort: 31627
+  oauth:
+    enabled: "FALSE"
+
+db:
+  user: mcm
+  password: changeme
+  host: localhost
+  port: 3306
+  schema: mcm
+
+host: localhost
+
+# development friendly variables
+imagePullPolicy: IfNotPresent

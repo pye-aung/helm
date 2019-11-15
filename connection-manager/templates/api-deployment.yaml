@@ -1,0 +1,77 @@
+{{- if not .Values.api.disabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "connection-manager.fullname" . }}-api
+  labels:
+    app.kubernetes.io/component: api
+{{ include "connection-manager.labels" . | indent 4 }}
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "connection-manager.fullname" . }}-api
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: connection-manager-api
+          {{- with .Values.api }}
+          image: "{{ .image.name }}:{{ .image.version }}"
+          ports:
+            - containerPort: {{ .ports.containerPort }}
+          {{- end }}
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
+          env:
+            - name: DATABASE_HOST
+              value: {{ .Values.db.host }}
+            - name: DATABASE_USER
+              value: {{ .Values.db.user }}
+            - name: DATABASE_PASSWORD
+              value: {{ .Values.db.password }}
+            - name: DATABASE_SCHEMA
+              value: {{ .Values.db.schema }}
+            - name: DATABASE_PORT
+              value: {{ .Values.db.port | quote }}
+            - name: PORT
+              value: {{ .Values.api.ports.containerPort | quote }}
+            - name: AUTH_ENABLED
+              value: {{ .Values.api.oauth.enabled | quote }}
+            - name: OAUTH2_ISSUER
+              value: {{ .Values.api.oauth.issuer }}
+            - name: APP_OAUTH_CLIENT_KEY
+              value: {{ .Values.api.oauth.key }}
+            - name: APP_OAUTH_CLIENT_SECRET
+              value: {{ .Values.api.oauth.secret }}
+            - name: AUTH_2FA_ENABLED
+              value: {{ .Values.api.auth2fa.enabled | quote }}
+            - name: TOTP_ADMIN_ISSUER
+              value: {{ .Values.api.totp.admin.issuer }}
+            - name: TOTP_ADMIN_AUTH_USER
+              value: {{ .Values.api.totp.admin.user }}
+            - name: TOTP_ADMIN_AUTH_PASSWORD
+              value: {{ .Values.api.totp.admin.password }}
+            - name: TOTP_LABEL
+              value: {{ .Values.api.totp.label }}
+            - name: TOTP_ISSUER
+              value: {{ .Values.api.totp.issuer }}
+            - name: WSO2_MANAGER_SERVICE_URL
+              value: {{ .Values.api.wso2.manager.service.url }}
+            - name: WSO2_MANAGER_SERVICE_USER
+              value: {{ .Values.api.wso2.manager.service.user }}
+            - name: WSO2_MANAGER_SERVICE_PASSWORD
+              value: {{ .Values.api.wso2.manager.service.pass }}
+            - name: OAUTH_RESET_PASSWORD_ISSUER
+              value: {{ .Values.api.oauth.resetPassword.issuer }}
+            - name: OAUTH_RESET_PASSWORD_AUTH_USER
+              value: {{ .Values.api.oauth.resetPassword.user }}
+            - name: OAUTH_RESET_PASSWORD_AUTH_PASSWORD
+              value: {{ .Values.api.oauth.resetPassword.pass }}
+          resources: {}
+          stdin: true
+          tty: true
+      hostname: connection-manager-api
+      restartPolicy: Always
+status: {}
+{{- end -}}
