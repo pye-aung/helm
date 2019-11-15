@@ -1,0 +1,68 @@
+version: 2
+
+jobs:
+  lint:
+    docker:
+      - image: alpine/helm:2.14.0
+    steps:
+      - run:
+          name: Install default dependencies
+          command: apk --no-cache add git openssh
+      - checkout
+      - run:
+          name: Lint Chart
+          command: helm lint connection-manager
+
+  build_and_publish_chart:
+    docker:
+      - image: alpine/helm:2.14.0
+    steps:
+      - run:
+          name: Install default dependencies
+          command: apk --no-cache add git openssh
+      - run:
+          name: Initialise Helm client only
+          command: helm init --client-only --skip-refresh
+      - add_ssh_keys:
+          fingerprints:
+            - "ee:ca:7d:64:84:82:5d:a3:79:89:dc:e5:f1:b6:e8:06"
+      - checkout
+      - run:
+          name: Build helm chart
+          command: |
+            mkdir new_chart
+            helm package connection-manager -d new_chart
+      - run:
+          name: Get current chart repo
+          command: |
+            GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone "$CIRCLE_REPOSITORY_URL" -b gh-pages --single-branch gh-pages
+      - run:
+          name: Add new chart to chart repo and publish
+          command: |
+            cp -r .circleci gh-pages/
+            cp -r new_chart/* gh-pages/
+            cd gh-pages || exit 1
+            helm repo index .
+            git add -A
+            git config user.email "david.gethings@modusbox.com"
+            git config user.name "David Gethings"
+            git commit -m "Automated deployment to GitHub Pages" --allow-empty
+            GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git push origin gh-pages
+
+workflows:
+  version: 2
+  build_and_publish:
+    jobs:
+      - lint:
+          filters:
+            branches:
+              only:
+                - master
+      - build_and_publish_chart:
+          # context: org-global
+          requires:
+            - lint
+          filters:
+            branches:
+              ignore:
+                - gh-pages
