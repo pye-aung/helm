@@ -25,7 +25,7 @@ jobs:
           command: helm init --client-only --skip-refresh
       - add_ssh_keys:
           fingerprints:
-            - "a4:4d:8d:76:e9:b3:cc:4e:8c:a1:d8:7a:8e:f3:98:93"
+            - "00:0f:46:69:fe:c7:df:ce:69:1d:47:7c:c6:3d:46:a2"
       - checkout
       - run:
           name: Build helm chart
@@ -44,8 +44,8 @@ jobs:
             cd gh-pages || exit 1
             helm repo index .
             git add -A
-            git config user.email "cicd@modusbox.com"
-            git config user.name "CICD at ModusBox"
+            git config user.email "david.gethings@modusbox.com"
+            git config user.name "David Gethings"
             git commit -m "Automated deployment to GitHub Pages" --allow-empty
             GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git push origin gh-pages
 
