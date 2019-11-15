@@ -40,7 +40,7 @@ jobs:
           name: Add new chart to chart repo and publish
           command: |
             cp -r .circleci gh-pages/
-            cp -r new_chart/* gh-pages/repo/
+            cp -r new_chart/* gh-pages/
             cd gh-pages || exit 1
             helm repo index repo
             git add -A
