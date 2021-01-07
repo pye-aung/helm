@@ -15,6 +15,16 @@ api:
       user: myuser
       pass: changeme
   url: https://localhost
+  env:
+    # Name is mandatory- other details are optional. If name is omitted, no environment will be
+    # created before the server starts.
+    name:
+    cn:
+    c:
+    l:
+    o:
+    ou:
+    st:
   auth2fa:
     enabled: "FALSE"
   totp:
