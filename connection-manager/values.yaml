@@ -1,7 +1,7 @@
 api:
   image:
     name: modusbox/connection-manager-api
-    version: 1.5.3
+    version: 1.7.0
   ports:
     containerPort: 3001
     nodePort: 31057
