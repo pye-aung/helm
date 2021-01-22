@@ -9,11 +9,13 @@ metadata:
 spec:
   replicas: 1
   strategy: {}
+  selector:
+    matchLabels: &labels
+      app.kubernetes.io/name: {{ include "connection-manager.fullname" . }}-api
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
-      labels:
-        app.kubernetes.io/name: {{ include "connection-manager.fullname" . }}-api
-        app.kubernetes.io/instance: {{ .Release.Name }}
+      labels: *labels
     spec:
       containers:
         - name: connection-manager-api
@@ -68,6 +70,20 @@ spec:
               value: {{ .Values.api.oauth.resetPassword.user }}
             - name: OAUTH_RESET_PASSWORD_AUTH_PASSWORD
               value: {{ .Values.api.oauth.resetPassword.pass }}
+            - name: ENV_INIT_NAME
+              value: {{ .Values.api.env.name }}
+            - name: ENV_INIT_CN
+              value: {{ .Values.api.env.cn }}
+            - name: ENV_INIT_C
+              value: {{ .Values.api.env.c }}
+            - name: ENV_INIT_L
+              value: {{ .Values.api.env.l }}
+            - name: ENV_INIT_O
+              value: {{ .Values.api.env.o }}
+            - name: ENV_INIT_OU
+              value: {{ .Values.api.env.ou }}
+            - name: ENV_INIT_ST
+              value: {{ .Values.api.env.st }}
           resources: {}
           stdin: true
           tty: true

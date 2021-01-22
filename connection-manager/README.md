@@ -35,6 +35,13 @@ And also `ui.oauth.enabled` must be set to `"TRUE"`
 | `api.oauth.resetPassword.user` | `myuser` | OAuth2 Reset password operation user |
 | `api.oauth.resetPassword.pass` | `changeme` | OAuth2 Reset password operation password |
 
+To configure an MCM environment declaratively, rather than by calling the API after server start,
+configure the following fields:
+
+| Parameter | Default | Description |
+| `api.env.name` | `null` | If specified, an environment with this name will be created before server start |
+| `api.env.{cn,c,l,o,ou,st}` | `null` | X509 attributes for the environment. All optional. |
+
 ## Developer/Debugging Configuration
 
 The following table lists further configuration parameters of the Connection Manager. These parameters should __not__ be edited during normal operations. They are provided to aid developement and debugging only.
