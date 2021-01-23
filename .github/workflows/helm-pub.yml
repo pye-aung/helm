@@ -1,20 +1,3 @@
-name: release
-on:
-  push:
-    tags: '*'
-
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Publish Helm charts
-        uses: stefanprodan/helm-gh-pages@master
-        with:
-          token: ${{ secrets.ACTION_TOKEN }}
-          helm_version: v2.17.0
-          charts_dir: connection-manager
-
 name: Release Charts
 
 on:
