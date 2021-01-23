@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   connection-manager:
   - appVersion: 0.6.16
-    created: "2021-01-22T15:38:58.624783428Z"
+    created: "2021-01-23T11:00:44.01484439Z"
     description: Connection Manager Helm chart for Kubernetes
-    digest: d69b4269ff91fbf3afe79fe269f84ab4d1a3e7afd5e0d77aa6640e97e90570df
+    digest: 8b566902af627cd475b3e7db2d7cc766800202244440830a396954a64d3c48bd
     keywords:
     - connection-manager
     maintainers:
@@ -20,7 +20,7 @@ entries:
     - connection-manager-0.4.0.tgz
     version: 0.4.0
   - appVersion: 0.6.16
-    created: "2021-01-22T15:38:58.624430043Z"
+    created: "2021-01-23T11:00:44.014502319Z"
     description: Connection Manager Helm chart for Kubernetes
     digest: 41c62804302ed0c451e768ac2a18e94b2d4f38db7298db3740cbf7fffbdc9353
     keywords:
@@ -37,4 +37,4 @@ entries:
     urls:
     - connection-manager-0.3.30.tgz
     version: 0.3.30
-generated: "2021-01-22T15:38:58.62382051Z"
+generated: "2021-01-23T11:00:44.013996986Z"
