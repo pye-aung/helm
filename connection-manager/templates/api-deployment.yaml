@@ -84,9 +84,34 @@ spec:
               value: {{ .Values.api.env.ou }}
             - name: ENV_INIT_ST
               value: {{ .Values.api.env.st }}
+            {{- if .Values.api.extraTLS.certChain.enabled }}
+            - name: EXTRA_CERTIFICATE_CHAIN_FILE_NAME
+              value: /mcm_secrets/extraTLS_cert_chain.pem
+            {{- end }}
+            {{- if .Values.api.extraTLS.rootCert.enabled }}
+            - name: EXTRA_ROOT_CERT_FILE_NAME
+              value: /mcm_secrets/extraTLS_root_cert.pem
+            {{- end }}
+            {{- if .Values.api.wso2TokenIssuer.cert.enabled }}
+            - name: CERTIFICATE_FILE_NAME
+              value: /mcm_secrets/wso2_token_issuer_cert.pem
+            {{- end }}
+            {{- if .Values.api.wso2TokenIssuer.embeddedCertificate.enabled }}
+            - name: EMBEDDED_CERTIFICATE
+              value: .Values.api.wso2TokenIssuer.embeddedCertificate.stringValue
+            {{- end }}
           resources: {}
+          volumeMounts:
+          - name: {{ .Release.Name }}-secret-volume
+            readOnly: true
+            mountPath: "/mcm_secrets"
+          stdin: true
           stdin: true
           tty: true
+      volumes:
+        - name: {{ .Release.Name }}-secret-volume
+          secret:
+            secretName: {{ .Release.Name }}-secret
       hostname: connection-manager-api
       restartPolicy: Always
 status: {}
