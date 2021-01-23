@@ -1,6 +1,6 @@
 api:
   image:
-    name: modusbox/connection-manager-api
+    name: ghcr.io/modusbox/connection-manager-api
     version: 1.7.0
   ports:
     containerPort: 3001
