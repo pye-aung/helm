@@ -40,6 +40,20 @@ api:
         url: https://localhost:9443/services/RemoteUserStoreManagerService.RemoteUserStoreManagerServiceHttpsSoap12Endpoint
         user: myuser
         pass: changeme
+  extraTLS:
+    certChain:
+      enabled: 0
+      stringValue: this_is_a_default
+    rootCert:
+      enabled: 0
+      stringValue: this_is_a_default
+  wso2TokenIssuer:
+    cert:
+      enabled: 0
+      stringValue: this_is_a_default
+    embeddedCertificate:
+      enabled: 0
+      stringValue: this_is_a_default
 
 ui:
   image:
