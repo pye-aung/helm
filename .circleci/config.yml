@@ -58,11 +58,11 @@ workflows:
             branches:
               only:
                 - master
-      - build_and_publish_chart:
-          # context: org-global
-          requires:
-            - lint
-          filters:
-            branches:
-              ignore:
-                - gh-pages
+      # - build_and_publish_chart:
+      #     # context: org-global
+      #     requires:
+      #       - lint
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
