@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Lint Chart
-          command: helm lint connection-manager
+          command: helm lint charts/connection-manager
 
   build_and_publish_chart:
     docker:
