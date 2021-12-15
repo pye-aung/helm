@@ -1,11 +1,15 @@
-{{- if not .Values.ingress_disabled -}}
+{{- if .Values.ingress.enabled -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ include "connection-manager.fullname" . }}-ingress
+{{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   rules:
-    - host: {{ .Values.host }}
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - path: /api/
