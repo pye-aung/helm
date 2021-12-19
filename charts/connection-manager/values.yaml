@@ -76,6 +76,9 @@ ingress:
   enabled: true
   host: localhost
   annotations: {}
-
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 # development friendly variables
 imagePullPolicy: IfNotPresent
