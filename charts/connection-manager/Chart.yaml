@@ -1,7 +1,8 @@
-appVersion: "0.6.16"
+apiVersion: v2
+appVersion: "0.6.17"
 description: Connection Manager Helm chart for Kubernetes
 name: connection-manager
-version: 0.4.13
+version: 0.4.14
 keywords:
   - connection-manager
 sources:
