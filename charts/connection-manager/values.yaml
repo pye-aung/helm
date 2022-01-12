@@ -74,7 +74,7 @@ api:
 
 ui:
   image:
-    name: ghcr.io/modusbox/connection-manager-api
+    name: ghcr.io/modusbox/connection-manager-ui
     version: 1.6.12
   ports:
     containerPort: 8080
