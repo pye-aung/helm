@@ -71,7 +71,9 @@ api:
       kv: secrets
     pkiBaseDomain: example.com
     signExpiryHours: 43800
-
+#  serviceAccountNameOverride:
+  rbac:
+    enabled: true
 ui:
   image:
     name: ghcr.io/modusbox/connection-manager-ui

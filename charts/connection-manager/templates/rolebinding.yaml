@@ -1,4 +1,4 @@
-{{- if not .Values.api.disabled -}}
+{{- if and (not .Values.api.disabled) (.Values.api.rbac.enabled) -}}
 
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
@@ -10,7 +10,10 @@ roleRef:
   name: system:auth-delegator
 subjects:
   - kind: ServiceAccount
-    name: {{ include "connection-manager.fullname" . }}-api
+  {{- if .Values.api.serviceAccountNameOverride }}
+  name: {{ .Values.api.serviceAccountNameOverride }}
+  {{- else }}
+  name: {{ include "connection-manager.fullname" . }}-api
+  {{- end }}
     namespace: {{ .Release.Namespace }}
-
 {{- end -}}
