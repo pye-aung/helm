@@ -1,7 +1,7 @@
 api:
   image:
     name: ghcr.io/modusbox/connection-manager-api
-    version: 1.7.1
+    version: 1.7.11
   ports:
     containerPort: 3001
     nodePort: 31057
@@ -54,11 +54,28 @@ api:
     embeddedCertificate:
       enabled: 0
       stringValue: this_is_a_default
+  vault:
+    auth:
+      k8s:
+        enabled: true
+        token: /var/run/secrets/kubernetes.io/serviceaccount/token
+        role: demo
+      appRole:
+        enabled: false
+        roleId: /vault/role-id
+        roleSecretId: /vault/role-secret-id
+    endpoint: http://vault:8200
+    mounts:
+      pki: pki
+      intermediatePki: pki_int
+      kv: secrets
+    pkiBaseDomain: example.com
+    signExpiryHours: 43800
 
 ui:
   image:
-    name: modusbox/connection-manager-ui
-    version: 1.6.9
+    name: ghcr.io/modusbox/connection-manager-ui
+    version: 1.6.12
   ports:
     containerPort: 8080
     nodePort: 31627
