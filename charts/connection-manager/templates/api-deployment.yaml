@@ -117,7 +117,7 @@ spec:
             - name: VAULT_PKI_BASE_DOMAIN
               value: {{ .Values.api.vault.pkiBaseDomain }}
             - name: VAULT_SIGN_EXPIRY_HOURS
-              value: {{ .Values.api.vault.signExpiryHours }}
+              value: {{ .Values.api.vault.signExpiryHours | quote }}
 
           resources: {}
           volumeMounts:
