@@ -3,7 +3,7 @@ version: 2
 jobs:
   lint:
     docker:
-      - image: alpine/helm:2.14.0
+      - image: alpine/helm:3.7.0
     steps:
       - run:
           name: Install default dependencies
@@ -15,7 +15,7 @@ jobs:
 
   build_and_publish_chart:
     docker:
-      - image: alpine/helm:2.14.0
+      - image: alpine/helm:3.7.0
     steps:
       - run:
           name: Install default dependencies
