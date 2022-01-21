@@ -75,20 +75,6 @@ spec:
               value: {{ .Values.api.oauth.resetPassword.user }}
             - name: OAUTH_RESET_PASSWORD_AUTH_PASSWORD
               value: {{ .Values.api.oauth.resetPassword.pass }}
-            - name: ENV_INIT_NAME
-              value: {{ .Values.api.env.name }}
-            - name: ENV_INIT_CN
-              value: {{ .Values.api.env.cn }}
-            - name: ENV_INIT_C
-              value: {{ .Values.api.env.c }}
-            - name: ENV_INIT_L
-              value: {{ .Values.api.env.l }}
-            - name: ENV_INIT_O
-              value: {{ .Values.api.env.o }}
-            - name: ENV_INIT_OU
-              value: {{ .Values.api.env.ou }}
-            - name: ENV_INIT_ST
-              value: {{ .Values.api.env.st }}
             {{- if .Values.api.extraTLS.certChain.enabled }}
             - name: EXTRA_CERTIFICATE_CHAIN_FILE_NAME
               value: /mcm_secrets/extraTLS_cert_chain.pem
