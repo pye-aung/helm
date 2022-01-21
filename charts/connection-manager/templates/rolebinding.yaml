@@ -10,10 +10,10 @@ roleRef:
   name: system:auth-delegator
 subjects:
   - kind: ServiceAccount
-  {{- if .Values.api.serviceAccountNameOverride }}
-  name: {{ .Values.api.serviceAccountNameOverride }}
-  {{- else }}
-  name: {{ include "connection-manager.fullname" . }}-api
-  {{- end }}
+    {{- if .Values.api.serviceAccountNameOverride }}
+    name: {{ .Values.api.serviceAccountNameOverride }}
+    {{- else }}
+    name: {{ include "connection-manager.fullname" . }}-api
+    {{- end }}
     namespace: {{ .Release.Namespace }}
 {{- end -}}
