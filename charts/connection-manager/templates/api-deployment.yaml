@@ -17,8 +17,8 @@ spec:
     metadata:
       labels: *labels
     spec:
-      {{- if .Values.api.serviceAccountNameOverride }}
-      serviceAccountName: {{ .Values.api.serviceAccountNameOverride }}
+      {{- if .Values.api.serviceAccount.serviceAccountNameOverride }}
+      serviceAccountName: {{ .Values.api.serviceAccount.serviceAccountNameOverride }}
       {{- else }}
       serviceAccountName: {{ include "connection-manager.fullname" . }}-api
       {{- end }}

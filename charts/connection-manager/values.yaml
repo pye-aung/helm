@@ -61,7 +61,9 @@ api:
       kv: secrets
     pkiBaseDomain: example.com
     signExpiryHours: 43800
-#  serviceAccountNameOverride:
+  serviceAccount:
+    externallyManaged: false
+    serviceAccountNameOverride: null
   rbac:
     enabled: true
 ui:
