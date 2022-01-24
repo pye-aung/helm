@@ -98,6 +98,8 @@ spec:
               value: {{ .Values.api.vault.auth.k8s.token }}
             - name: VAULT_K8S_ROLE
               value: {{ .Values.api.vault.auth.k8s.role }}
+            - name: VAULT_K8S_AUTH_MOUNT_POINT
+              value: {{ .Values.api.vault.auth.k8s.mountPoint }}
             {{- else if .Values.api.vault.auth.appRole.enabled }}
             - name: VAULT_AUTH_METHOD
               value: APP_ROLE
