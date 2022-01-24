@@ -1,7 +1,7 @@
 api:
   image:
     name: ghcr.io/modusbox/connection-manager-api
-    version: 1.7.12
+    version: 1.7.15
   ports:
     containerPort: 3001
     nodePort: 31057
@@ -49,6 +49,7 @@ api:
       k8s:
         enabled: true
         token: /var/run/secrets/kubernetes.io/serviceaccount/token
+        mountPoint: kubernetes
         role: demo
       appRole:
         enabled: false
