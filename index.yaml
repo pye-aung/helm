@@ -3,6 +3,25 @@ entries:
   connection-manager:
   - apiVersion: v2
     appVersion: 0.6.17
+    created: "2022-02-03T11:19:00.649342344Z"
+    description: Connection Manager Helm chart for Kubernetes
+    digest: 789d8650611f8bde56b4736dd09f97d289a13f062db5d247f2a4fe586daad8be
+    keywords:
+    - connection-manager
+    maintainers:
+    - email: ramiro@modusbox.com
+      name: Ramiro González Maciel
+    - email: ivan.annovazzi@modusbox.com
+      name: Ivan Annovazzi
+    name: connection-manager
+    sources:
+    - https://github.com/modusbox/connection-manager-api
+    - https://github.com/modusbox/connection-manager-ui
+    urls:
+    - https://github.com/modusbox/helm/releases/download/connection-manager-0.4.28/connection-manager-0.4.28.tgz
+    version: 0.4.28
+  - apiVersion: v2
+    appVersion: 0.6.17
     created: "2022-02-02T20:23:33.79685323Z"
     description: Connection Manager Helm chart for Kubernetes
     digest: 1670f19a06aaa542b87590a10c814c04ff4154eb3eb1155d4f645ce7dcdacada
