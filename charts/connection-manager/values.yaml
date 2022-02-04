@@ -1,7 +1,7 @@
 api:
   image:
     name: ghcr.io/modusbox/connection-manager-api
-    version: 1.7.25
+    version: 1.7.26
   ports:
     containerPort: 3001
     nodePort: 31057
@@ -63,7 +63,8 @@ api:
       dfspClientCertBundle: secret/onboarding_pm4mls
       dfspInternalIPWhitelistBundle: secret/whitelist_pm4mls
       dfspExternalIPWhitelistBundle: secret/whitelist_fsps
-    pkiBaseDomain: example.com
+    pkiServerRole: server-role
+    pkiClientRole: client-role
     signExpiryHours: 43800
   serviceAccount:
     externallyManaged: false
