@@ -124,6 +124,8 @@ spec:
               value: /resources/tlsClientCSRParameters.json
             - name: SERVER_CSR_PARAMETERS
               value: /resources/tlsServerCSRParameters.json
+            - name: CA_CSR_PARAMETERS
+              value: /resources/caCSRParameters.json
             - name: VAULT_MOUNT_DFSP_CLIENT_CERT_BUNDLE
               value: {{ .Values.api.vault.mounts.dfspClientCertBundle | quote }}
             - name: VAULT_MOUNT_DFSP_INT_IP_WHITELIST_BUNDLE
@@ -152,6 +154,8 @@ spec:
               path: tlsClientCSRParameters.json
             - key: tlsServerCSRParameters.json
               path: tlsServerCSRParameters.json
+            - key: caCSRParameters.json
+              path: caCSRParameters.json
       hostname: connection-manager-api
       restartPolicy: Always
 status: {}
