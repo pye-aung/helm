@@ -120,12 +120,18 @@ spec:
               value: {{ .Values.api.vault.pkiBaseDomain }}
             - name: VAULT_SIGN_EXPIRY_HOURS
               value: {{ .Values.api.vault.signExpiryHours | quote }}
+            - name: CLIENT_CSR_PARAMETERS
+              value: /resources/tlsClientCSRParameters.json
+            - name: SERVER_CSR_PARAMETERS
+              value: /resources/tlsServerCSRParameters.json
 
           resources: {}
           volumeMounts:
           - name: {{ .Release.Name }}-secret-volume
             readOnly: true
-            mountPath: "/mcm_secrets"
+            mountPath: /mcm_secrets
+          - name: tls-configmap
+            mountPath: /resources
           stdin: true
           stdin: true
           tty: true
@@ -133,6 +139,14 @@ spec:
         - name: {{ .Release.Name }}-secret-volume
           secret:
             secretName: {{ .Release.Name }}-secret
+        - name: tls-configmap
+          configMap:
+            name: {{ include "connection-manager.fullname" . }}-api-tls-configmap
+            items:
+            - key: tlsClientCSRParameters.json
+              path: tlsClientCSRParameters.json
+            - key: tlsServerCSRParameters.json
+              path: tlsServerCSRParameters.json
       hostname: connection-manager-api
       restartPolicy: Always
 status: {}

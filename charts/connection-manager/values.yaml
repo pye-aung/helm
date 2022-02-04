@@ -1,7 +1,7 @@
 api:
   image:
     name: ghcr.io/modusbox/connection-manager-api
-    version: 1.7.21
+    version: 1.7.22
   ports:
     containerPort: 3001
     nodePort: 31057
@@ -94,3 +94,45 @@ ingress:
   #      - chart-example.local
 # development friendly variables
 imagePullPolicy: IfNotPresent
+
+config:
+  tlsClientCSRParametersData: |-
+    {
+      "subject": {
+        "CN": "test_client_mcm",
+        "E": "mcm@test.com",
+        "O": "test",
+        "OU": "test",
+        "C": "US",
+        "ST": "test",
+        "L": "test"
+      },
+      "extensions": {
+        "subjectAltName": {
+          "dns": [
+          ],
+          "ips": [
+          ]
+        }
+      }
+    }
+  tlsServerCSRParametersData: |-
+    {
+      "subject": {
+        "CN": "test_client_mcm",
+        "E": "mcm@test.com",
+        "O": "test",
+        "OU": "test",
+        "C": "US",
+        "ST": "test",
+        "L": "test"
+      },
+      "extensions": {
+        "subjectAltName": {
+          "dns": [
+          ],
+          "ips": [
+          ]
+        }
+      }
+    }
