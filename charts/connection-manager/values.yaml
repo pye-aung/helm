@@ -60,6 +60,9 @@ api:
       pki: pki
       intermediatePki: pki_int
       kv: secrets
+      dfspClientCertBundle: onboarding_pm4mls
+      dfspInternalIPWhitelistBundle: whitelist_pm4mls
+      dfspExternalIPWhitelistBundle: whitelist_fsps
     pkiBaseDomain: example.com
     signExpiryHours: 43800
   serviceAccount:

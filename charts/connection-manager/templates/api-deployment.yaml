@@ -124,7 +124,12 @@ spec:
               value: /resources/tlsClientCSRParameters.json
             - name: SERVER_CSR_PARAMETERS
               value: /resources/tlsServerCSRParameters.json
-
+            - name: VAULT_MOUNT_DFSP_CLIENT_CERT_BUNDLE
+              value: {{ .Values.api.vault.mounts.dfspClientCertBundle | quote }}
+            - name: VAULT_MOUNT_DFSP_INT_IP_WHITELIST_BUNDLE
+              value: {{ .Values.api.vault.mounts.dfspInternalIPWhitelistBundle | quote }}
+            - name: VAULT_MOUNT_DFSP_EXT_IP_WHITELIST_BUNDLE
+              value: {{ .Values.api.vault.mounts.dfspExternalIPWhitelistBundle | quote }}
           resources: {}
           volumeMounts:
           - name: {{ .Release.Name }}-secret-volume
