@@ -11,3 +11,5 @@ metadata:
 data:
   tlsClientCSRParameters.json: {{ .Values.config.tlsClientCSRParametersData | quote }}
   tlsServerCSRParameters.json: {{ .Values.config.tlsServerCSRParametersData | quote }}
+  caCSRParameters.json: {{ .Values.config.caCSRParametersData | quote }}
+

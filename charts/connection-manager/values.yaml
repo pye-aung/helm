@@ -60,9 +60,9 @@ api:
       pki: pki
       intermediatePki: pki_int
       kv: secrets
-      dfspClientCertBundle: onboarding_pm4mls
-      dfspInternalIPWhitelistBundle: whitelist_pm4mls
-      dfspExternalIPWhitelistBundle: whitelist_fsps
+      dfspClientCertBundle: secret/onboarding_pm4mls
+      dfspInternalIPWhitelistBundle: secret/whitelist_pm4mls
+      dfspExternalIPWhitelistBundle: secret/whitelist_fsps
     pkiBaseDomain: example.com
     signExpiryHours: 43800
   serviceAccount:
@@ -138,4 +138,14 @@ config:
           ]
         }
       }
+    }
+  caCSRParametersData: |-
+    {
+      "CN": "CA",
+      "E": "ca@test.com",
+      "O": "test",
+      "OU": "test",
+      "C": "US",
+      "ST": "test",
+      "L": "test"
     }
