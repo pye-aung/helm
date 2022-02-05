@@ -1,7 +1,7 @@
 api:
   image:
     name: ghcr.io/modusbox/connection-manager-api
-    version: 1.7.27
+    version: 1.7.28
   ports:
     containerPort: 3001
     nodePort: 31057
@@ -44,6 +44,7 @@ api:
     embeddedCertificate:
       enabled: 0
       stringValue: this_is_a_default
+  switchFQDN: switch.example.com
   vault:
     auth:
       k8s:

@@ -134,6 +134,8 @@ spec:
               value: {{ .Values.api.vault.mounts.dfspInternalIPWhitelistBundle | quote }}
             - name: VAULT_MOUNT_DFSP_EXT_IP_WHITELIST_BUNDLE
               value: {{ .Values.api.vault.mounts.dfspExternalIPWhitelistBundle | quote }}
+            - name: SWITCH_FQDN
+              value: {{ .Values.api.switchFQDN | quote }}
           resources: {}
           volumeMounts:
           - name: {{ .Release.Name }}-secret-volume
