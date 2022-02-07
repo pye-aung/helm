@@ -6,7 +6,9 @@ metadata:
   name: {{ include "connection-manager.fullname" . }}-api
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    {{ include "connection-manager.labels" . | indent 4 }}
+    app.kubernetes.io/component: api
+{{ include "connection-manager.labels" . | indent 4 }}
+
 rules:
   - apiGroups: [""]
     resources: ["secrets"]
