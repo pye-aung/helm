@@ -136,6 +136,12 @@ spec:
               value: {{ .Values.api.vault.mounts.dfspExternalIPWhitelistBundle | quote }}
             - name: SWITCH_FQDN
               value: {{ .Values.api.switchFQDN | quote }}
+            - name: CERT_MANAGER_ENABLED
+              value: {{ .Values.api.certManager.enabled | quote }}
+            - name: CERT_MANAGER_SERVER_CERT_SECRET_NAME
+              value: {{ .Values.api.certManager.serverCertSecretName | quote }}
+            - name: CERT_MANAGER_SERVER_CERT_SECRET_NAMESPACE
+              value: {{ .Values.api.certManager.serverCertSecretNamespace | quote }}
           resources: {}
           volumeMounts:
           - name: {{ .Release.Name }}-secret-volume
