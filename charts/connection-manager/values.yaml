@@ -1,7 +1,7 @@
 api:
   image:
     name: ghcr.io/modusbox/connection-manager-api
-    version: 1.8.3
+    version: 1.8.4
   ports:
     containerPort: 3001
     nodePort: 31057
