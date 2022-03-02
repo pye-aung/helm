@@ -137,7 +137,7 @@ spec:
             - name: SWITCH_FQDN
               value: {{ .Values.api.switchFQDN | quote }}
             - name: PRIVATE_KEY_LENGTH
-              value: {{ .Values.api.keyLength | quote }}
+              value: {{ .Values.api.vault.keyLength | quote }}
             - name: CERT_MANAGER_ENABLED
               value: {{ .Values.api.certManager.enabled | quote }}
             - name: CERT_MANAGER_SERVER_CERT_SECRET_NAME
