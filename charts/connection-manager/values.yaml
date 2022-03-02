@@ -71,6 +71,7 @@ api:
     pkiServerRole: server-role
     pkiClientRole: client-role
     signExpiryHours: 43800
+    keyLength: 2048
   serviceAccount:
     externallyManaged: false
     serviceAccountNameOverride: null
