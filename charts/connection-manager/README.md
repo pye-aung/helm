@@ -79,7 +79,7 @@ Using standard new feature process update the following files:
   - Edit either `api.image.version` or `ui.image.version` with the latest version
 - [Chart.yaml](Chart.yaml)
   - Increment `appVersion` as appropriate
-  - Incredament `version`
+  - Increment `version`
 
 Updates to `version` are to be done in the following manner:
 
