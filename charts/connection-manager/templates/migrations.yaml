@@ -1,3 +1,4 @@
+{{- if .Values.migrations.enabled -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -43,3 +44,4 @@ spec:
           value: {{ .Values.db.port | quote }}
       restartPolicy: OnFailure
   backoffLimit: 20
+{{- end}}
