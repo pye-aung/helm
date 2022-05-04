@@ -31,21 +31,17 @@ spec:
           set +e
       env:
         - name: NVM_SCRIPT
-          value: https://raw.githubusercontent.com/nvm-sh/nvm/{{ .Values.tests.api.nvm.version }}/install.sh
+          value: {{ printf "https://raw.githubusercontent.com/nvm-sh/nvm/%s/install.sh"  .Values.tests.api.nvm.version | quote }}
         - name: TEST_SCRIPT
-          value: {{ tpl .Values.tests.api.script . }}
+          value: {{ tpl .Values.tests.api.script . | quote }}
         - name: GIT_URL
-          value: {{ tpl .Values.tests.api.git.url . }}
+          value: {{ tpl .Values.tests.api.git.url . | quote }}
         - name: GIT_TAG
-          value: {{ tpl .Values.tests.api.git.tag . }}
+          value: {{ tpl .Values.tests.api.git.tag . | quote }}
         - name: TARGET_DIR
-          value: {{ tpl .Values.tests.api.targetDirectory . }}
-        - name: APP_ENDPOINT
-          value: {{ tpl .Values.tests.api.config.appEndpoint . }}
-        - name: APP_OAUTH_CLIENT_KEY
-          value: {{ tpl .Values.tests.api.config.appOauthClientKey . }}
-        - name: APP_OAUTH_CLIENT_SECRET
-          value: {{ tpl .Values.tests.api.config.appOauthClientSecret . }}
-        - name: OAUTH2_ISSUER
-          value: {{ tpl .Values.tests.api.config.oauth2Issuer . }}
+          value: {{ tpl .Values.tests.api.targetDirectory . | quote }}
+        {{- range $name, $value := .Values.tests.api.env }}
+        - name: {{ $name }}
+          value: {{ tpl $value $ | quote }}
+        {{- end }}
 {{- end}}

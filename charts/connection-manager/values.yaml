@@ -175,13 +175,14 @@ tests:
     targetDirectory: /tmp/tests
     nvm:
       version: v0.39.1
-    config:
+    # Configuration Ref: https://github.com/modusbox/connection-manager-api/tree/master/functional-tests#configuration
+    env:
       # MCM API URL e.g. http(s)://<host>:<port>/api 
-      appEndpoint: 'http://{{ include "connection-manager.fullname" . }}-api:3001/api'
+      APP_ENDPOINT: 'http://{{ include "connection-manager.fullname" . }}-api:3001/api'
       # MCM OAuth Client Key
-      appOauthClientKey: ''
+      APP_OAUTH_CLIENT_KEY: ''
       # MCM OAuth Client Secret
-      appOauthClientSecret: ''
+      APP_OAUTH_CLIENT_SECRET: ''
       # OAuth Issuer URL e.g. http(s)://<host>:<port>/oauth2/token
       # Note: `client_credentials` grant_type must be supported
-      oauth2Issuer: ''
+      OAUTH2_ISSUER: ''
