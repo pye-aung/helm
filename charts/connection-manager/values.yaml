@@ -183,5 +183,5 @@ tests:
       # MCM OAuth Client Secret
       appOauthClientSecret: ''
       # OAuth Issuer URL e.g. https://iskm.local/oauth2/token
-      # Note: that `client_credentials` grant_type must be supported
+      # Note: `client_credentials` grant_type must be supported
       oauth2Issuer: ''
