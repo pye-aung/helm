@@ -180,9 +180,9 @@ tests:
       # MCM API URL e.g. http(s)://<host>:<port>/api 
       APP_ENDPOINT: 'http://{{ include "connection-manager.fullname" . }}-api:3001/api'
       # MCM OAuth Client Key
-      APP_OAUTH_CLIENT_KEY: ''
+      APP_OAUTH_CLIENT_KEY: '{{ .Values.api.oauth.secret }}'
       # MCM OAuth Client Secret
-      APP_OAUTH_CLIENT_SECRET: ''
+      APP_OAUTH_CLIENT_SECRET: '{{ .Values.api.oauth.key }}'
       # OAuth Issuer URL e.g. http(s)://<host>:<port>/oauth2/token
       # Note: `client_credentials` grant_type must be supported
-      OAUTH2_ISSUER: ''
+      OAUTH2_ISSUER: '{{ .Values.api.oauth.issuer }}'
