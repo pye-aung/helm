@@ -2,7 +2,7 @@ api:
   disabled: false
   image:
     name: ghcr.io/modusbox/connection-manager-api
-    version: 1.8.17
+    version: 1.8.18
   ports:
     containerPort: 3001
     nodePort: 31057
@@ -177,7 +177,7 @@ tests:
       version: v0.39.1
     # Configuration Ref: https://github.com/modusbox/connection-manager-api/tree/master/functional-tests#configuration
     env:
-      # MCM API URL e.g. http(s)://<host>:<port>/api 
+      # MCM API URL e.g. http(s)://<host>:<port>/api
       APP_ENDPOINT: 'http://{{ include "connection-manager.fullname" . }}-api:3001/api'
       # MCM OAuth Client Key
       APP_OAUTH_CLIENT_KEY: '{{ if eq (.Values.api.oauth.enabled | toString | lower) "true" }}{{ .Values.api.oauth.key }}{{ end }}'
