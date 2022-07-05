@@ -171,7 +171,7 @@ tests:
     script: 'https://raw.githubusercontent.com/modusbox/connection-manager-api/{{ .Values.api.image.version }}/scripts/run-functional-tests.sh'
     git:
       url: https://github.com/modusbox/connection-manager-api.git
-      tag: 'v{{ .Values.api.image.version }}'
+      tag: '{{ .Values.api.image.version }}'
     targetDirectory: /tmp/tests
     nvm:
       version: v0.39.1
