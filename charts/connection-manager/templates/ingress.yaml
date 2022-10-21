@@ -13,6 +13,9 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  {{- if semverCompare ">=1.19-0" $k8sVer }}
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- end }}
   {{- if .Values.ingress.tls }}
   tls:
   {{- range .Values.ingress.tls }}
@@ -28,7 +31,9 @@ spec:
       http:
         paths:
           - path: /api/
-            pathType: Prefix
+            {{- if semverCompare ">=1.19-0" $k8sVer }}
+            pathType: {{ .Values.ingress.pathType }}
+            {{- end }}
             backend:
             {{- if semverCompare ">=1.19-0" $k8sVer }}
               service:
@@ -40,7 +45,9 @@ spec:
               servicePort: {{ .Values.api.ports.containerPort }}
             {{- end }}
           - path: /
-            pathType: Prefix
+            {{- if semverCompare ">=1.19-0" $k8sVer }}
+            pathType: {{ .Values.ingress.pathType }}
+            {{- end }}
             backend:
             {{- if semverCompare ">=1.19-0" $k8sVer }}
               service:
