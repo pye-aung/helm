@@ -105,6 +105,8 @@ ingress:
   host: localhost
   annotations: {}
   tls: []
+  pathType: ImplementationSpecific
+  className: "nginx"
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
